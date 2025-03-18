@@ -1,15 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Table } from '../components/Table';
-import {
-    findAndRemoveLastItemByIndexes,
-    getTransformedData,
-} from '../utlis/helpers';
+import { Children, findAndRemoveLastItemByIndexes } from '../utlis/helpers';
 import { TableContext } from '../contexts/TableContext';
 
-export const TableView = () => {
-    const data = getTransformedData();
+export const TableView: FC<{ data: Children[] }> = ({ data }) => {
     const [map, setMap] = useState(data);
 
     const removeRow = (indexes?: number[]) => {
